@@ -268,6 +268,14 @@ func (s *Schema) SetProperty(name string, schema Schema) *Schema {
 	return s
 }
 
+func (s Schema) SetPropertyNonRef(name string, schema Schema) Schema {
+	if s.Properties == nil {
+		s.Properties = make(map[string]Schema)
+	}
+	s.Properties[name] = schema
+	return s
+}
+
 // WithAllOf sets the all of property
 func (s *Schema) WithAllOf(schemas ...Schema) *Schema {
 	s.AllOf = schemas
